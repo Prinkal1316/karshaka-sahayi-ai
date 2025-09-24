@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sprout, MessageCircle, Users } from "lucide-react";
+import { Sprout, MessageCircle, Users, Languages } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/hero-farming.jpg";
 
 const HeroSection = () => {
+  const { language, setLanguage, t } = useLanguage();
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -27,27 +30,51 @@ const HeroSection = () => {
 
         {/* Main Heading */}
         <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-          Your AI Farming Friend
+          {t('hero_title')}
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Kerala Farm AI empowers farmers with intelligent agricultural guidance, 
-          multilingual support, and personalized farming advice for all major crops.
+          {t('hero_subtitle')}
         </p>
+
+        {/* Language Selection */}
+        <div className="mb-8">
+          <p className="text-sm text-primary-foreground/80 mb-3 font-medium">{t('choose_language')}</p>
+          <div className="flex gap-3 justify-center">
+            <Button
+              variant={language === 'english' ? 'default' : 'outline'}
+              size="lg"
+              onClick={() => setLanguage('english')}
+              className="min-w-[120px] text-sm"
+            >
+              <Languages className="w-4 h-4 mr-2" />
+              English
+            </Button>
+            <Button
+              variant={language === 'malayalam' ? 'default' : 'outline'}
+              size="lg"
+              onClick={() => setLanguage('malayalam')}
+              className="min-w-[120px] text-sm"
+            >
+              <Languages className="w-4 h-4 mr-2" />
+              മലയാളം
+            </Button>
+          </div>
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button variant="outline" size="lg" asChild className="min-w-[200px]">
             <Link to="/chat" className="flex items-center gap-2">
               <MessageCircle className="w-5 h-5" />
-              Start AI Chat
+              {t('start_chat')}
             </Link>
           </Button>
           <Button variant="ghost" size="lg" asChild className="min-w-[200px] text-primary-foreground hover:bg-primary-foreground/10">
             <Link to="/farmers" className="flex items-center gap-2">
               <Users className="w-5 h-5" />
-              Manage Farmers
+              {t('manage_farmers')}
             </Link>
           </Button>
         </div>
@@ -55,16 +82,16 @@ const HeroSection = () => {
         {/* Features Preview */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
           <div className="bg-background/10 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/20">
-            <div className="text-2xl font-bold text-primary-foreground mb-2">Malayalam + English</div>
-            <div className="text-primary-foreground/80 text-sm">Real-time translation support</div>
+            <div className="text-2xl font-bold text-primary-foreground mb-2">{t('feature_multilingual')}</div>
+            <div className="text-primary-foreground/80 text-sm">{t('feature_multilingual_desc')}</div>
           </div>
           <div className="bg-background/10 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/20">
-            <div className="text-2xl font-bold text-primary-foreground mb-2">Smart Advice</div>
-            <div className="text-primary-foreground/80 text-sm">AI-powered crop guidance</div>
+            <div className="text-2xl font-bold text-primary-foreground mb-2">{t('feature_smart')}</div>
+            <div className="text-primary-foreground/80 text-sm">{t('feature_smart_desc')}</div>
           </div>
           <div className="bg-background/10 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/20">
-            <div className="text-2xl font-bold text-primary-foreground mb-2">Activity Tracking</div>
-            <div className="text-primary-foreground/80 text-sm">Monitor farming progress</div>
+            <div className="text-2xl font-bold text-primary-foreground mb-2">{t('feature_tracking')}</div>
+            <div className="text-primary-foreground/80 text-sm">{t('feature_tracking_desc')}</div>
           </div>
         </div>
       </div>

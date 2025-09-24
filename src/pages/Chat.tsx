@@ -15,6 +15,7 @@ import {
   MessageCircle 
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Message {
   id: string;
@@ -25,18 +26,20 @@ interface Message {
 }
 
 const Chat = () => {
+  const { language: selectedLanguage, setLanguage: setSelectedLanguage } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hello! I\'m your AI farming assistant. I can help you with crop advice, pest management, and farming techniques in both English and Malayalam. What would you like to know about farming in Kerala?',
+      content: selectedLanguage === 'english' 
+        ? 'Hello! I\'m your AI farming assistant. I can help you with crop advice, pest management, and farming techniques in both English and Malayalam. What would you like to know about farming in Kerala?'
+        : 'നമസ്കാരം! ഞാൻ നിങ്ങളുടെ AI കാർഷിക സഹായിയാണ്. വിള ഉപദേശം, കീട നിയന്ത്രണം, കൃഷി സാങ്കേതിക വിദ്യകൾ എന്നിവയിൽ ഇംഗ്ലീഷിലും മലയാളത്തിലും ഞാൻ നിങ്ങളെ സഹായിക്കും. കേരളത്തിലെ കൃഷിയെക്കുറിച്ച് എന്ത് അറിയാൻ ആഗ്രഹിക്കുന്നു?',
       sender: 'ai',
       timestamp: new Date(),
-      language: 'english'
+      language: selectedLanguage
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'malayalam'>('english');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
