@@ -12,7 +12,10 @@ import {
   Leaf, 
   MapPin,
   Clock,
-  MessageCircle 
+  MessageCircle,
+  Building2,
+  TrendingUp,
+  IndianRupee
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -246,6 +249,102 @@ const Chat = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Government Schemes Section */}
+        <div className="mt-8">
+          <Card className="border-border/50 shadow-agricultural">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-primary" />
+                Government Schemes
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 border border-border rounded-lg">
+                  <h4 className="font-semibold text-sm mb-2">PM-KISAN Scheme</h4>
+                  <p className="text-xs text-muted-foreground mb-2">₹6000 annual income support to farmers</p>
+                  <Badge variant="success" className="text-xs">Active</Badge>
+                </div>
+                <div className="p-4 border border-border rounded-lg">
+                  <h4 className="font-semibold text-sm mb-2">Crop Insurance Scheme</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Protection against crop losses</p>
+                  <Badge variant="secondary" className="text-xs">Seasonal</Badge>
+                </div>
+                <div className="p-4 border border-border rounded-lg">
+                  <h4 className="font-semibold text-sm mb-2">Soil Health Card</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Free soil testing and recommendations</p>
+                  <Badge variant="success" className="text-xs">Available</Badge>
+                </div>
+                <div className="p-4 border border-border rounded-lg">
+                  <h4 className="font-semibold text-sm mb-2">Organic Farming Subsidy</h4>
+                  <p className="text-xs text-muted-foreground mb-2">50% subsidy for organic inputs</p>
+                  <Badge variant="outline" className="text-xs">Apply Now</Badge>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Mandi Prices Section */}
+        <div className="mt-8">
+          <Card className="border-border/50 shadow-agricultural">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-primary" />
+                Today's Mandi Prices
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-sm">Rice (Pokkali)</h4>
+                    <p className="text-xs text-muted-foreground">Kuttanad Market</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-success" />
+                    <span className="font-semibold text-success">₹3,200/quintal</span>
+                    <Badge variant="success" className="text-xs">+2.5%</Badge>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-sm">Coconut</h4>
+                    <p className="text-xs text-muted-foreground">Kozhikode Market</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-success" />
+                    <span className="font-semibold text-success">₹25/piece</span>
+                    <Badge variant="outline" className="text-xs">No change</Badge>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-sm">Black Pepper</h4>
+                    <p className="text-xs text-muted-foreground">Idukki Market</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-destructive" />
+                    <span className="font-semibold text-destructive">₹850/kg</span>
+                    <Badge variant="destructive" className="text-xs">-1.2%</Badge>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-sm">Banana (Nendran)</h4>
+                    <p className="text-xs text-muted-foreground">Thrissur Market</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-success" />
+                    <span className="font-semibold text-success">₹40/dozen</span>
+                    <Badge variant="success" className="text-xs">+5.0%</Badge>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Info Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
